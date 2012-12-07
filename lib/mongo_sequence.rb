@@ -8,7 +8,6 @@ class MongoSequence
     def database
       return @database if @database
       return MongoMapper.database if defined?(MongoMapper) && MongoMapper.database
-      return Mongoid.database if defined?(Mongoid) && Mongoid.database
     end
 
     def collection

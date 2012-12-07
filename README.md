@@ -16,7 +16,7 @@ Install without Bundler:
 
     gem install mongo_sequence --no-ri --no-rdoc
 
-If you're _not_ using MongoMapper or Mongoid, you'll have to tell MongoSequence what database to use:
+If you're _not_ using MongoMapper, you'll have to tell MongoSequence what database to use:
 
 ``` ruby
 MongoSequence.database = Mongo::Connection.new.db('my_app_development')
