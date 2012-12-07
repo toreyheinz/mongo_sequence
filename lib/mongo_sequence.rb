@@ -54,11 +54,12 @@ class MongoSequence
       :new    => true, # return the modified doc
       :update => update
     }
-    collection.find_and_modify(options)['current']
-  rescue Mongo::OperationFailure => e
-    raise unless e.message =~ /No matching object found/
-    init_in_database
-    current_after_update(update)
+    if sequence = collection.find_and_modify(options)
+      sequence['current']
+    else
+      init_in_database
+      current_after_update(update)
+    end
   end
 
   def init_in_database
